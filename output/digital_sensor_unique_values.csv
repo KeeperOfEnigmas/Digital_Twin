@@ -1,0 +1,9 @@
+sensor,unique_values
+COMP,1.0 0.0
+DV_eletric,0.0 1.0
+Towers,1.0 0.0
+MPG,1.0 0.0
+LPS,0.0 1.0
+Pressure_switch,1.0 0.0
+Oil_level,1.0 0.0
+Caudal_impulses,1.0 0.0

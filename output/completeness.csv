@@ -1,0 +1,17 @@
+,dtype,non_null,missing
+timestamp,object,1516948,0
+TP2,float64,1516948,0
+TP3,float64,1516948,0
+H1,float64,1516948,0
+DV_pressure,float64,1516948,0
+Reservoirs,float64,1516948,0
+Oil_temperature,float64,1516948,0
+Motor_current,float64,1516948,0
+COMP,float64,1516948,0
+DV_eletric,float64,1516948,0
+Towers,float64,1516948,0
+MPG,float64,1516948,0
+LPS,float64,1516948,0
+Pressure_switch,float64,1516948,0
+Oil_level,float64,1516948,0
+Caudal_impulses,float64,1516948,0

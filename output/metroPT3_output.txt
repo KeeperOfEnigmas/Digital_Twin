@@ -1,0 +1,162 @@
+                   timestamp    TP2    TP3     H1  DV_pressure  Reservoirs  Oil_temperature  Motor_current  COMP  DV_eletric  Towers  MPG  LPS  Pressure_switch  Oil_level  Caudal_impulses
+0        2020-02-01 00:00:00 -0.012  9.358  9.340       -0.024       9.358           53.600         0.0400   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+1        2020-02-01 00:00:10 -0.014  9.348  9.332       -0.022       9.348           53.675         0.0400   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+2        2020-02-01 00:00:19 -0.012  9.338  9.322       -0.022       9.338           53.600         0.0425   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+3        2020-02-01 00:00:29 -0.012  9.328  9.312       -0.022       9.328           53.425         0.0400   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+4        2020-02-01 00:00:39 -0.012  9.318  9.302       -0.022       9.318           53.475         0.0400   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+...                      ...    ...    ...    ...          ...         ...              ...            ...   ...         ...     ...  ...  ...              ...        ...              ...
+1516943  2020-09-01 03:59:10 -0.014  8.918  8.906       -0.022       8.918           59.675         0.0425   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+1516944  2020-09-01 03:59:20 -0.014  8.904  8.888       -0.020       8.904           59.600         0.0450   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+1516945  2020-09-01 03:59:30 -0.014  8.890  8.876       -0.022       8.892           59.600         0.0425   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+1516946  2020-09-01 03:59:40 -0.012  8.876  8.864       -0.022       8.878           59.550         0.0450   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+1516947  2020-09-01 03:59:50 -0.014  8.860  8.848       -0.022       8.864           59.475         0.0425   1.0         0.0     1.0  1.0  0.0              1.0        1.0              1.0
+
+[1516948 rows x 16 columns]
+Saved output\data_preview.csv
+-------------------------------
+Shape: (1516948, 16)
+-------------------------------
+Check for value completeness:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 1516948 entries, 0 to 1516947
+Data columns (total 16 columns):
+ #   Column           Non-Null Count    Dtype  
+---  ------           --------------    -----  
+ 0   timestamp        1516948 non-null  object 
+ 1   TP2              1516948 non-null  float64
+ 2   TP3              1516948 non-null  float64
+ 3   H1               1516948 non-null  float64
+ 4   DV_pressure      1516948 non-null  float64
+ 5   Reservoirs       1516948 non-null  float64
+ 6   Oil_temperature  1516948 non-null  float64
+ 7   Motor_current    1516948 non-null  float64
+ 8   COMP             1516948 non-null  float64
+ 9   DV_eletric       1516948 non-null  float64
+ 10  Towers           1516948 non-null  float64
+ 11  MPG              1516948 non-null  float64
+ 12  LPS              1516948 non-null  float64
+ 13  Pressure_switch  1516948 non-null  float64
+ 14  Oil_level        1516948 non-null  float64
+ 15  Caudal_impulses  1516948 non-null  float64
+dtypes: float64(15), object(1)
+memory usage: 185.2+ MB
+None
+Saved output\completeness.csv
+-------------------------------
+No missing values.
+-------------------------------
+Statistics of Analog Sensors:
+                TP2           TP3            H1   DV_pressure    Reservoirs  Oil_temperature  Motor_current
+count  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06     1.516948e+06   1.516948e+06
+mean   1.367826e+00  8.984611e+00  7.568155e+00  5.595619e-02  8.985233e+00     6.264418e+01   2.050171e+00
+std    3.250930e+00  6.390951e-01  3.333200e+00  3.824015e-01  6.383070e-01     6.516261e+00   2.302053e+00
+min   -3.200000e-02  7.300000e-01 -3.600000e-02 -3.200000e-02  7.120000e-01     1.540000e+01   2.000000e-02
+25%   -1.400000e-02  8.492000e+00  8.254000e+00 -2.200000e-02  8.494000e+00     5.777500e+01   4.000000e-02
+50%   -1.200000e-02  8.960000e+00  8.784000e+00 -2.000000e-02  8.960000e+00     6.270000e+01   4.500000e-02
+75%   -1.000000e-02  9.492000e+00  9.374000e+00 -1.800000e-02  9.492000e+00     6.725000e+01   3.807500e+00
+max    1.067600e+01  1.030200e+01  1.028800e+01  9.844000e+00  1.030000e+01     8.905000e+01   9.295000e+00
+Saved output\analog_sensor_stats.csv
+-------------------------------
+Potential outliers 
+TP2: Range [-0.032, 10.676], negative pressure values -> potential sensor malfunction or anomalies 
+TP3: Range [0.73, 10.302], reasonable pressure range 
+H1: Range [-0.036, 10.288], negative pressure values -> potential sensor malfunction or anomalies 
+DV_pressure: Range [-0.032, 9.844], negative pressure values -> potential sensor malfunction or anomalies 
+Reservoirs: Range[0.712, 10.3], should be close to TP3 
+Oil_temperature: Range [15.4, 89.05], reasonable temperature range 
+Motor_current: Range [0.02, 9.295], reasonable current range
+-------------------------------
+Statistics of Digital Sensors:
+               COMP    DV_eletric        Towers           MPG           LPS  Pressure_switch     Oil_level  Caudal_impulses
+count  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06     1.516948e+06  1.516948e+06     1.516948e+06
+mean   8.369568e-01  1.606106e-01  9.198483e-01  8.326640e-01  3.420025e-03     9.914368e-01  9.041556e-01     9.371066e-01
+std    3.694052e-01  3.671716e-01  2.715280e-01  3.732757e-01  5.838091e-02     9.214078e-02  2.943779e-01     2.427712e-01
+min    0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00     0.000000e+00  0.000000e+00     0.000000e+00
+25%    1.000000e+00  0.000000e+00  1.000000e+00  1.000000e+00  0.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+50%    1.000000e+00  0.000000e+00  1.000000e+00  1.000000e+00  0.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+75%    1.000000e+00  0.000000e+00  1.000000e+00  1.000000e+00  0.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+max    1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+Saved output\digital_sensor_stats.csv
+-------------------------------
+Unique values for COMP: [1. 0.]
+Unique values for DV_eletric: [0. 1.]
+Unique values for Towers: [1. 0.]
+Unique values for MPG: [1. 0.]
+Unique values for LPS: [0. 1.]
+Unique values for Pressure_switch: [1. 0.]
+Unique values for Oil_level: [1. 0.]
+Unique values for Caudal_impulses: [1. 0.]
+Saved output\digital_sensor_unique_values.csv
+-------------------------------
+No outliers 
+COMP: Range [0, 1], binary sensor 
+DV_eletric: Range [0, 1], binary sensor 
+Towers: Range [0, 1], binary sensor 
+MPG: Range [0, 1], binary sensor 
+LPS: Range [0, 1], binary sensor 
+Pressure_switch: Range [0, 1], binary sensor 
+Oil_level: Range [0, 1], binary sensor 
+Caudal_impulses: Range [0, 1], binary sensor
+-------------------------------
+Normalization:
+                TP2           TP3            H1   DV_pressure    Reservoirs  Oil_temperature  Motor_current          COMP    DV_eletric        Towers           MPG           LPS  Pressure_switch     Oil_level  Caudal_impulses
+count  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06     1.516948e+06   1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06     1.516948e+06  1.516948e+06     1.516948e+06
+mean   1.307271e-01  8.623705e-01  7.365512e-01  8.906054e-03  8.628737e-01     6.414689e-01   2.188863e-01  8.369568e-01  1.606106e-01  9.198483e-01  8.326640e-01  3.420025e-03     9.914368e-01  9.041556e-01     9.371066e-01
+std    3.035982e-01  6.676714e-02  3.228593e-01  3.872029e-02  6.657353e-02     8.847605e-02   2.481998e-01  3.694052e-01  3.671716e-01  2.715280e-01  3.732757e-01  5.838091e-02     9.214078e-02  2.943779e-01     2.427712e-01
+min    0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00     0.000000e+00   0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00     0.000000e+00  0.000000e+00     0.000000e+00
+25%    1.680986e-03  8.109068e-01  8.029833e-01  1.012556e-03  8.116395e-01     5.753564e-01   2.156334e-03  1.000000e+00  0.000000e+00  1.000000e+00  1.000000e+00  0.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+50%    1.867762e-03  8.597994e-01  8.543200e-01  1.215067e-03  8.602420e-01     6.422267e-01   2.695418e-03  1.000000e+00  0.000000e+00  1.000000e+00  1.000000e+00  0.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+75%    2.054539e-03  9.153782e-01  9.114684e-01  1.417578e-03  9.157280e-01     7.040054e-01   4.083558e-01  1.000000e+00  0.000000e+00  1.000000e+00  1.000000e+00  0.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+max    1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00     1.000000e+00   1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
+Saved output\normalized_stats.csv
+-------------------------------
+No alignment needed, all entries have the same length 
+No encoding needed, all the values are numeric 
+No aggregation needed, it leads to loss of information, expecially with the binary sensors
+-------------------------------
+Saved output\TP2.png
+Saved output\TP3.png
+Saved output\H1.png
+Saved output\DV_pressure.png
+Saved output\Reservoirs.png
+Saved output\Oil_temperature.png
+Saved output\Motor_current.png
+-------------------------------
+Analog singlas are periodic with very obvious repeated patterns 
+Failures are clearly visible in the plots where the patterns completely disapper
+-------------------------------
+Correlation matrix (analog):
+                  TP2   TP3    H1  DV_pressure  Reservoirs  Oil_temperature  Motor_current
+TP2              1.00 -0.01 -0.96         0.42       -0.01             0.25           0.70
+TP3             -0.01  1.00  0.22        -0.15        1.00             0.40           0.41
+H1              -0.96  0.22  1.00        -0.43        0.23            -0.16          -0.60
+DV_pressure      0.42 -0.15 -0.43         1.00       -0.15             0.34           0.30
+Reservoirs      -0.01  1.00  0.23        -0.15        1.00             0.40           0.41
+Oil_temperature  0.25  0.40 -0.16         0.34        0.40             1.00           0.53
+Motor_current    0.70  0.41 -0.60         0.30        0.41             0.53           1.00
+Saved output\correlation_analog.csv
+Saved output\correlation_analog.png
+-------------------------------
+Correlation matrix (all_sensors):
+                  TP2   TP3    H1  DV_pressure  Reservoirs  Oil_temperature  Motor_current  COMP  DV_eletric  Towers   MPG   LPS  Pressure_switch  Oil_level  Caudal_impulses
+TP2              1.00 -0.01 -0.96         0.42       -0.01             0.25           0.70 -0.96        0.95   -0.62 -0.94  0.06            -0.07       0.01            -0.01
+TP3             -0.01  1.00  0.22        -0.15        1.00             0.40           0.41  0.10       -0.08    0.06  0.09 -0.32             0.03      -0.03            -0.05
+H1              -0.96  0.22  1.00        -0.43        0.23            -0.16          -0.60  0.97       -0.96    0.63  0.95 -0.13             0.06      -0.02            -0.00
+DV_pressure      0.42 -0.15 -0.43         1.00       -0.15             0.34           0.30 -0.42        0.43   -0.29 -0.42  0.01            -0.09       0.06             0.04
+Reservoirs      -0.01  1.00  0.23        -0.15        1.00             0.40           0.41  0.10       -0.08    0.07  0.09 -0.33             0.03      -0.03            -0.05
+Oil_temperature  0.25  0.40 -0.16         0.34        0.40             1.00           0.53 -0.23        0.24   -0.15 -0.24 -0.06            -0.02      -0.15            -0.07
+Motor_current    0.70  0.41 -0.60         0.30        0.41             0.53           1.00 -0.68        0.69   -0.44 -0.68  0.05            -0.05      -0.03            -0.05
+COMP            -0.96  0.10  0.97        -0.42        0.10            -0.23          -0.68  1.00       -0.96    0.67  0.98 -0.13             0.18       0.02             0.05
+DV_eletric       0.95 -0.08 -0.96         0.43       -0.08             0.24           0.69 -0.96        1.00   -0.61 -0.98  0.13             0.01       0.00            -0.03
+Towers          -0.62  0.06  0.63        -0.29        0.07            -0.15          -0.44  0.67       -0.61    1.00  0.66 -0.09             0.26       0.06             0.09
+MPG             -0.94  0.09  0.95        -0.42        0.09            -0.24          -0.68  0.98       -0.98    0.66  1.00 -0.13             0.18       0.05             0.09
+LPS              0.06 -0.32 -0.13         0.01       -0.33            -0.06           0.05 -0.13        0.13   -0.09 -0.13  1.00             0.00       0.02             0.02
+Pressure_switch -0.07  0.03  0.06        -0.09        0.03            -0.02          -0.05  0.18        0.01    0.26  0.18  0.00             1.00       0.22             0.29
+Oil_level        0.01 -0.03 -0.02         0.06       -0.03            -0.15          -0.03  0.02        0.00    0.06  0.05  0.02             0.22       1.00             0.07
+Caudal_impulses -0.01 -0.05 -0.00         0.04       -0.05            -0.07          -0.05  0.05       -0.03    0.09  0.09  0.02             0.29       0.07             1.00
+Saved output\correlation_all_sensors.csv
+Saved output\correlation_all_sensors.png
+-------------------------------
+Very strong correlation bettwen TP3 and reservoirs, COMP and H1 and MPG, TP2 and DV_eletric 
+These correlations are suggested in the data description
+-------------------------------
