@@ -53,7 +53,7 @@ print("-------------------------------")
 
 "Cleaning"
 # No missing values.
-print("Check for value completeness:")
+print("Cleaning:")
 print(df.info())
 completeness = pd.DataFrame({
     "dtype": df.dtypes.astype(str),
@@ -107,7 +107,7 @@ print("-------------------------------")
 
 "Preparation"
 # Normalize the analog sensor values to [0, 1]
-print("Normalization:")
+print("Preparation:")
 df_norm = df.copy()
 scaler = MinMaxScaler()
 df_norm[ANALOG_SENSORS] = scaler.fit_transform(df_norm[ANALOG_SENSORS])
@@ -115,7 +115,8 @@ normalized_stats = df_norm.describe()
 print(normalized_stats)
 save_csv(normalized_stats, "normalized_stats")
 print("-------------------------------")
-print("No alignment needed, all entries have the same length \n" \
+print("We normalize the data to [0, 1]. \n" \
+      "No alignment needed, all entries have the same length \n" \
       "No encoding needed, all the values are numeric \n" \
       "No aggregation needed, it leads to loss of information, expecially with the binary sensors")
 print("-------------------------------")
@@ -124,10 +125,11 @@ print("-------------------------------")
 
 "Exploratory Data Analysis"
 ANALOG_UNITS = {"TP2": "bar", "TP3": "bar", "H1": "bar", "DV_pressure": "bar", "Reservoirs": "bar", "Oil_temperature": "°C", "Motor_current": "A"}
+DIGITAL_UNITS = {"COMP": "", "DV_eletric": "", "Towers": "", "MPG": "", "LPS": "", "Pressure_switch": "", "Oil_level": "", "Caudal_impulses": ""}
 
-START = "2020-03-01 00:00"
-DAYS = 0
-HOURS = 6
+START = "2020-06-05 06:00"
+DAYS = 4
+HOURS = 0
 MINUTES = 0
 
 start = pd.Timestamp(START)
@@ -139,7 +141,6 @@ window_data = df.loc[mask].copy()
 window_data["timestamp"] = timestamps[mask]
 
 window_label = f"{start:%Y-%m-%d %H:%M} to {end:%Y-%m-%d %H:%M}"
-file_label = f"{start:%Y-%m-%d_%H-%M}_{DAYS}d{HOURS}h{MINUTES}m"  # no ":" so it is a valid Windows filename
 
 # Show the date on the x-axis only when the window spans more than one day
 if duration > pd.Timedelta(days=1):
@@ -155,25 +156,27 @@ if duration <= pd.Timedelta(0):
 elif window_data.empty:
     print(f"No data from {window_label}")
 else:
-    for sensor in ANALOG_SENSORS:
+    sensors = ANALOG_SENSORS
+    units = ANALOG_UNITS
+    for sensor in sensors:
         fig, ax = plt.subplots(figsize=(16, 8))
         ax.plot(window_data["timestamp"], window_data[sensor], linewidth=0.6)
         ax.set_title(f"{sensor} from {window_label}")
         ax.set_xlabel("Time")
-        ax.set_ylabel(f"{sensor} [{ANALOG_UNITS[sensor]}]")
+        ax.set_ylabel(f"{sensor} [{units[sensor]}]")
         ax.xaxis.set_major_formatter(mdates.DateFormatter(time_format))
         ax.grid(True, alpha=0.3)
         fig.tight_layout()
 
-        # path = os.path.join(OUTPUT_DIR, f"{sensor}_{file_label}.png")
-        path = os.path.join(OUTPUT_DIR, f"{sensor}.png")
+        path = os.path.join(OUTPUT_DIR, f"{sensor}_failure.png")
         fig.savefig(path, dpi=150)
         print(f"Saved {path}")
 
     # plt.show()
 
 print("-------------------------------")
-print("Analog singlas are periodic with very obvious repeated patterns \n" \
+print("Time-series Plots: \n" \
+      "Analog signals are periodic with obvious repeated patterns \n" \
       "Failures are clearly visible in the plots where the patterns completely disapper")
 print("-------------------------------")
 
@@ -216,10 +219,18 @@ for name, sensors in correlation_sets.items():
 
 # plt.show()
 
-print("Very strong correlation bettwen TP3 and reservoirs, COMP and H1 and MPG, TP2 and DV_eletric \n" \
+print("Correlation Matrices: \n" \
+      "Very strong correlation between TP3 and reservoirs, COMP and H1 and MPG, TP2 and DV_eletric \n" \
       "These correlations are suggested in the data description")
 print("-------------------------------")
 
+
+
+"Gaps and Limitations"
+print("Gaps and Limitations: \n" \
+      "The leak is not quantified, such as the size of the leak. Only the estimated duration from confirming to repairing can be derived from the dataset. \n" \
+      "The leak behavior can be observed from abnormal patterns of the signals. \n" \
+      "This prevents us from estimating the possible size of the leak and if it is related to the behavior of the sensors or the time needed for repairs.")
 
 
 

@@ -16,7 +16,7 @@ Saved output\data_preview.csv
 -------------------------------
 Shape: (1516948, 16)
 -------------------------------
-Check for value completeness:
+Cleaning:
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 1516948 entries, 0 to 1516947
 Data columns (total 16 columns):
@@ -98,7 +98,7 @@ Pressure_switch: Range [0, 1], binary sensor
 Oil_level: Range [0, 1], binary sensor 
 Caudal_impulses: Range [0, 1], binary sensor
 -------------------------------
-Normalization:
+Preparation:
                 TP2           TP3            H1   DV_pressure    Reservoirs  Oil_temperature  Motor_current          COMP    DV_eletric        Towers           MPG           LPS  Pressure_switch     Oil_level  Caudal_impulses
 count  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06     1.516948e+06   1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06  1.516948e+06     1.516948e+06  1.516948e+06     1.516948e+06
 mean   1.307271e-01  8.623705e-01  7.365512e-01  8.906054e-03  8.628737e-01     6.414689e-01   2.188863e-01  8.369568e-01  1.606106e-01  9.198483e-01  8.326640e-01  3.420025e-03     9.914368e-01  9.041556e-01     9.371066e-01
@@ -110,19 +110,21 @@ min    0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00     
 max    1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00     1.000000e+00   1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00     1.000000e+00  1.000000e+00     1.000000e+00
 Saved output\normalized_stats.csv
 -------------------------------
+We normalize the data to [0, 1]. 
 No alignment needed, all entries have the same length 
 No encoding needed, all the values are numeric 
 No aggregation needed, it leads to loss of information, expecially with the binary sensors
 -------------------------------
-Saved output\TP2.png
-Saved output\TP3.png
-Saved output\H1.png
-Saved output\DV_pressure.png
-Saved output\Reservoirs.png
-Saved output\Oil_temperature.png
-Saved output\Motor_current.png
+Saved output\TP2_failure.png
+Saved output\TP3_failure.png
+Saved output\H1_failure.png
+Saved output\DV_pressure_failure.png
+Saved output\Reservoirs_failure.png
+Saved output\Oil_temperature_failure.png
+Saved output\Motor_current_failure.png
 -------------------------------
-Analog singlas are periodic with very obvious repeated patterns 
+Time-series Plots: 
+Analog signals are periodic with obvious repeated patterns 
 Failures are clearly visible in the plots where the patterns completely disapper
 -------------------------------
 Correlation matrix (analog):
@@ -157,6 +159,11 @@ Caudal_impulses -0.01 -0.05 -0.00         0.04       -0.05            -0.07     
 Saved output\correlation_all_sensors.csv
 Saved output\correlation_all_sensors.png
 -------------------------------
-Very strong correlation bettwen TP3 and reservoirs, COMP and H1 and MPG, TP2 and DV_eletric 
+Correlation Matrices: 
+Very strong correlation between TP3 and reservoirs, COMP and H1 and MPG, TP2 and DV_eletric 
 These correlations are suggested in the data description
 -------------------------------
+Gaps and Limitations: 
+The leak is not quantified, such as the size of the leak. Only the estimated duration from confirming to repairing can be derived from the dataset. 
+The leak behavior can be observed from abnormal patterns of the signals. 
+This prevents us from estimating the possible size of the leak and if it is related to the behavior of the sensors or the time needed for repairs.
